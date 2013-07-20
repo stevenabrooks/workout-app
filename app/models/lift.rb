@@ -1,5 +1,5 @@
 class Lift < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :routine_id, :exercise_id
 
   belongs_to :routine
   belongs_to :exercise

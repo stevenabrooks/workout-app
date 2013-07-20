@@ -3,4 +3,6 @@ class Exercise < ActiveRecord::Base
 
   has_many :lifts
   has_many :routines, through: :lifts
+
+  validates_uniqueness_of :name
 end
