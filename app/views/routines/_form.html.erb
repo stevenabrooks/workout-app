@@ -12,18 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, "Routine Name" %><br />
     <%= f.text_field :name %>
   </div>
 
   <%= f.fields_for :exercises do |builder| %>
-  <p>
-    <%= builder.label :name, "Exercise" %><br/>
-    <%= builder.text_field :name %><br />
-    <%= builder.check_box :_destroy %>
-    <%= builder.label :_destroy, "Remove Exercise" %>
-    <% end %>
-  </p>
+  <%= render 'exercise_fields', :f => builder %>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

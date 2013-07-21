@@ -25,7 +25,7 @@ class RoutinesController < ApplicationController
   # GET /routines/new.json
   def new
     @routine = Routine.new
-    2.times { @routine.exercises.build }
+    10.times { @routine.exercises.build }
 
     respond_to do |format|
       format.html # new.html.erb
