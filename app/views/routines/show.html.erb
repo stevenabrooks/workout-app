@@ -4,6 +4,12 @@
   <b>Name:</b>
   <%= @routine.name %>
 </p>
+<p>
+  <ul>
+  <% @routine.exercises.each do |exercise| %>
+  <li><%= exercise.name %></li>
+  <% end %>
+</ul>
 
 
 <%= link_to 'Edit', edit_routine_path(@routine) %> |

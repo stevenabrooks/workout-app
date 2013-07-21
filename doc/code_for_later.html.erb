@@ -1,0 +1,9 @@
+this code is for a drop down of all artists on the create new song form:
+
+<%= f.label  :artist %> (<%= link_to 'Create New', new_artist_path %>)
+<%= f.collection_select :artist_id, Artist.all.sort_by {|i| i.sort_name.downcase}, :id, :name, {include_blank: 'select an Artist', selected: @selected_artist}, class: "select-block" %>
+
+In this, :artist_id is what is being passed into the params.
+
+
+
