@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require_tree .
 
-function remove_fields(link) {
-  $(link).previous("input[type=hidden").value = "1";
-  $(link).up(".fields").hide();
-}
+// function remove_fields(link) {
+//   $(link).previous("input[type=hidden").value = "1";
+//   $(link).up(".fields").hide();
+// }
