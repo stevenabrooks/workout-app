@@ -25,7 +25,6 @@ class RoutinesController < ApplicationController
   # GET /routines/new.json
   def new
     @routine = Routine.new
-    10.times { @routine.exercises.build }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,7 +40,13 @@ class RoutinesController < ApplicationController
   # POST /routines
   # POST /routines.json
   def create
-    @routine = Routine.new(params[:routine])
+    @routine = Routine.new(:name => params[:routine][:name])
+    exercises_array = params[:routine][:exercises].collect do |exercise_hash|
+      unless exercise_hash[:name] == ""
+        Exercise.find_or_create_by_name(exercise_hash[:name])
+      end
+    end 
+    @routine.exercises = exercises_array.compact
 
     respond_to do |format|
       if @routine.save

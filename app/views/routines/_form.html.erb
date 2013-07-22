@@ -1,25 +1,12 @@
-<%= form_for(@routine) do |f| %>
-  <% if @routine.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@routine.errors.count, "error") %> prohibited this routine from being saved:</h2>
 
-      <ul>
-      <% @routine.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= form_tag routines_path %>
+
+  <%= label_tag "routine[name]", "Routine Name" %>
+  <%= text_field_tag "routine[name]" %><br />
+
+  <% 5.times do %>
+    <%= label_tag "routine[exercises][][name]", "Exercise Name" %>
+    <%= text_field_tag "routine[exercises][][name]" %><br />
   <% end %>
 
-  <div class="field">
-    <%= f.label :name, "Routine Name" %><br />
-    <%= f.text_field :name %>
-  </div>
-
-  <%= f.fields_for :exercises do |builder| %>
-  <%= render 'exercise_fields', :f => builder %>
-  <% end %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<%= submit_tag "Submit Routine" %>
