@@ -3,4 +3,5 @@ class Lift < ActiveRecord::Base
 
   belongs_to :routine
   belongs_to :exercise
+  has_many :infos
 end
