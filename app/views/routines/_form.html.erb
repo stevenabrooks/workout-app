@@ -7,6 +7,18 @@
   <% 5.times do %>
     <%= label_tag "routine[exercises][][name]", "Exercise Name" %>
     <%= text_field_tag "routine[exercises][][name]" %><br />
+
+    <% 3.times do %>
+      <%= label_tag "routine[exercises][][infos][repetition]", "Repetitions" %>
+      <%= text_field_tag "routine[exercises][][infos][repetition]" %>
+
+      <%= label_tag "routine[exercises][][infos][weight]", "Weight" %>
+      <%= text_field_tag "routine[exercises][][infos][weight]" %><br />
+
+    <% end %>
   <% end %>
 
 <%= submit_tag "Submit Routine" %>
+
+
+
