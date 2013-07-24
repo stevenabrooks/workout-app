@@ -40,6 +40,7 @@ class RoutinesController < ApplicationController
   # POST /routines
   # POST /routines.json
   def create
+    raise params.inspect
     @routine = Routine.new(:name => params[:routine][:name])
     exercises_array = params[:routine][:exercises].collect do |exercise_hash|
       unless exercise_hash[:name] == ""
@@ -47,6 +48,9 @@ class RoutinesController < ApplicationController
       end
     end 
     @routine.exercises = exercises_array.compact
+
+    # params[:routine][:exercises].collect do |exercise| exercise[:infos] end
+    # [{"repetition"=>"3", "weight"=>"405"}, {"repetition"=>"3", "weight"=>"425"}]
 
     respond_to do |format|
       if @routine.save
