@@ -48,12 +48,16 @@ class RoutinesController < ApplicationController
       end
     end 
     @routine.exercises = exercises_array.compact
+    
 
     # params[:routine][:exercises].collect do |exercise| exercise[:infos] end
     # [{"repetition"=>"3", "weight"=>"405"}, {"repetition"=>"3", "weight"=>"425"}]
 
     respond_to do |format|
       if @routine.save
+          puts "#"*15
+          puts @routine.lifts
+          puts "#"*15
         format.html { redirect_to @routine, notice: 'Routine was successfully created.' }
         format.json { render json: @routine, status: :created, location: @routine }
       else

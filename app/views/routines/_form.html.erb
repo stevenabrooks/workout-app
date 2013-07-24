@@ -9,11 +9,11 @@
     <%= text_field_tag "routine[exercises][][name]" %><br />
 
     <% 2.times do %>
-      <%= label_tag "routine[exercises][][infos][repetition]", "Repetitions" %>
-      <%= text_field_tag "routine[exercises][][infos][repetition]" %>
+      <%= label_tag "routine[lifts][infos][][repetition]", "Repetitions" %>
+      <%= text_field_tag "routine[lifts][infos][][repetition]" %>
 
-      <%= label_tag "routine[exercises][][infos][weight]", "Weight" %>
-      <%= text_field_tag "routine[exercises][][infos][weight]" %><br />
+      <%= label_tag "routine[lifts][infos][][weight]", "Weight" %>
+      <%= text_field_tag "routine[lifts][infos][][weight]" %><br />
 
     <% end %>
   <% end %>
