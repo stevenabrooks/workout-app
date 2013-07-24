@@ -5,3 +5,5 @@ class Lift < ActiveRecord::Base
   belongs_to :exercise
   has_many :infos
 end
+
+

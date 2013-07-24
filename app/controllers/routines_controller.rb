@@ -42,22 +42,37 @@ class RoutinesController < ApplicationController
   def create
     raise params.inspect
     @routine = Routine.new(:name => params[:routine][:name])
-    exercises_array = params[:routine][:exercises].collect do |exercise_hash|
-      unless exercise_hash[:name] == ""
-        Exercise.find_or_create_by_name(exercise_hash[:name])
-      end
-    end 
-    @routine.exercises = exercises_array.compact
+    @routine.save
+    # @exercise = Exercise.find(params[:lift][:exercise_id])
+    # @lift = Lift.create(:exercise_id => @exercise.id, :routine_id => @routine.id)
+    
+    # params[:lift].each do |exercise|
+    #   ex = Exercise.find(exercise[:exercise_id])
+    #   lift = Lift.create(:exercise_id => ex.id, :routine_id => @routine.id)
+    #   exercise[:infos].each do |hash_of_info|
+    #     info = Info.build(hash_of_info)
+    #     info.lift_id = lift.id
+    #     info.save
+    #   end
+    # end
+
+
+    # exercises_array = params[:routine][:exercises].collect do |exercise_hash|
+    #   unless exercise_hash[:name] == ""
+    #     Exercise.find_or_create_by_name(exercise_hash[:name])
+    #   end
+    # end 
+    # @routine.exercises = exercises_array.compact
     
 
     # params[:routine][:exercises].collect do |exercise| exercise[:infos] end
     # [{"repetition"=>"3", "weight"=>"405"}, {"repetition"=>"3", "weight"=>"425"}]
 
     respond_to do |format|
-      if @routine.save
-          puts "#"*15
-          puts @routine.lifts
-          puts "#"*15
+      if @routine.persisted?
+          # puts "#"*15
+          # puts @routine.lifts
+          # puts "#"*15
         format.html { redirect_to @routine, notice: 'Routine was successfully created.' }
         format.json { render json: @routine, status: :created, location: @routine }
       else

@@ -4,45 +4,23 @@
   <%= label_tag "routine[name]", "Routine Name" %>
   <%= text_field_tag "routine[name]" %><br />
 
-  <% 2.times do %>
-    <%= label_tag "routine[exercises][][name]", "Exercise Name" %>
-    <%= text_field_tag "routine[exercises][][name]" %><br />
 
-    <% 2.times do %>
-      <%= label_tag "routine[lifts][infos][][repetition]", "Repetitions" %>
-      <%= text_field_tag "routine[lifts][infos][][repetition]" %>
+    <%= select("lifts[]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %>
+    <%= label_tag "lifts[][infos][][weight]", "weight" %>
+    <%= text_field_tag "lifts[][infos][][weight]" %>
+    
+    <%= label_tag "lifts[][infos][][repetition]", "reps" %>
+    <%= text_field_tag "lifts[][infos][][repetition]" %>
 
-      <%= label_tag "routine[lifts][infos][][weight]", "Weight" %>
-      <%= text_field_tag "routine[lifts][infos][][weight]" %><br />
-
-    <% end %>
-  <% end %>
+  
 
 <%= submit_tag "Submit Routine" %>
 
-<!--  "routine"=>
-  {
-    "name"=>"Test Routine",
-    "exercises"=>
-      [
-        {
-          "name"=>"Squat",
-          "infos"=>
-            {
-              "repetition"=>"10",
-              "weight"=>"405"
-            }
-        },
-          {
-            "name"=>"Dips",
-            "infos"=>
-              {
-                "repetition"=>"20",
-                "weight"=>"45"
-              }
-            }
-      ]
-  } -->
+  <%= select("lifts[]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %>
 
+
+
+
+<!-- collection_select("lifts[]", :exercise_id, Exercise.all, :id, :name) -->
 
 
