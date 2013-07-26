@@ -40,33 +40,27 @@ class RoutinesController < ApplicationController
   # POST /routines
   # POST /routines.json
   def create
-    raise params.inspect
     @routine = Routine.new(:name => params[:routine][:name])
     @routine.save
-    # @exercise = Exercise.find(params[:lift][:exercise_id])
-    # @lift = Lift.create(:exercise_id => @exercise.id, :routine_id => @routine.id)
-    
-    # params[:lift].each do |exercise|
-    #   ex = Exercise.find(exercise[:exercise_id])
-    #   lift = Lift.create(:exercise_id => ex.id, :routine_id => @routine.id)
-    #   exercise[:infos].each do |hash_of_info|
-    #     info = Info.build(hash_of_info)
-    #     info.lift_id = lift.id
-    #     info.save
-    #   end
-    # end
 
-
-    # exercises_array = params[:routine][:exercises].collect do |exercise_hash|
-    #   unless exercise_hash[:name] == ""
-    #     Exercise.find_or_create_by_name(exercise_hash[:name])
-    #   end
-    # end 
-    # @routine.exercises = exercises_array.compact
+    exercise_hash = params[:lifts]
+    exercise = Exercise.find(exercise_hash[:exercise_id].to_i)
+    lift = Lift.create(:exercise_id => exercise.id, :routine_id => @routine.id)
+    exercise_hash[:infos].each do |hash_of_info|
+      info = Info.create(hash_of_info)
+      info.lift_id = lift.id
+      info.save
+    end
     
 
-    # params[:routine][:exercises].collect do |exercise| exercise[:infos] end
-    # [{"repetition"=>"3", "weight"=>"405"}, {"repetition"=>"3", "weight"=>"425"}]
+ # -----------------------------   
+ # :lift => {:exercise_id => 1, 
+ #    :infos => [
+ #      {:weight => "250", :repetition => "8"}, 
+ #      {:weight => "250", :repetition => "8"}
+ #      ]}
+ # -----------------------------
+
 
     respond_to do |format|
       if @routine.persisted?

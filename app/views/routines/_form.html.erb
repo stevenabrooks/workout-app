@@ -5,22 +5,34 @@
   <%= text_field_tag "routine[name]" %><br />
 
 
-    <%= select("lifts[]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %>
-    <%= label_tag "lifts[][infos][][weight]", "weight" %>
-    <%= text_field_tag "lifts[][infos][][weight]" %>
+    <%= collection_select("lifts", :exercise_id, Exercise.all, :id, :name) %>
+    <%= label_tag "lifts[infos][][weight]", "weight" %>
+    <%= text_field_tag "lifts[infos][][weight]" %>
     
-    <%= label_tag "lifts[][infos][][repetition]", "reps" %>
-    <%= text_field_tag "lifts[][infos][][repetition]" %>
+    <%= label_tag "lifts[infos][][repetition]", "reps" %>
+    <%= text_field_tag "lifts[infos][][repetition]" %>
 
   
 
 <%= submit_tag "Submit Routine" %>
 
-  <%= select("lifts[]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %>
+  <!-- select("lifts[]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] })  -->
 
 
 
 
 <!-- collection_select("lifts[]", :exercise_id, Exercise.all, :id, :name) -->
 
+<!-- select("lifts", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) -->
 
+
+<!--   def create
+    @routine = Routine.new(:name => params[:routine][:name])
+    @routine.save
+    exercise_hash = params[:lifts]    
+    lift = Lift.create(:exercise_id => exercise_hash[:exercise_id].to_i, :routine_id => @routine.id)
+    exercise_hash[:infos].each do |hash_of_info|
+      hash_of_info[:lift_id] = lift.id
+      Info.create(hash_of_info)
+    end
+   -->
