@@ -40,6 +40,7 @@ class RoutinesController < ApplicationController
   # POST /routines
   # POST /routines.json
   def create
+    raise params.inspect
     @routine = Routine.new(:name => params[:routine][:name])
     @routine.save
 

@@ -1,0 +1,83 @@
+
+
+{:routine=>{
+  :name=>"Test"},
+   :arbitrary=>[
+    {
+      :lift=>{
+        :exercise_id=>"1",
+        :infos=>[
+          {:weight=>"250", :repetiton=>"8"}, {:weight=>"275", :repetition=>"6"}
+            ]}}]}
+
+'arbitrary'[{lift =>{exercise_id}}]
+
+
+routine name = 
+  params[:routine][:name]
+
+each lift = 
+  params[:arbitrary].each do |lift|
+    p lift
+  end
+  
+each lift exercise_id = 
+  a[:arbitrary].each do |lift|
+    array << lift[:lift][:exercise_id]
+  end
+
+
+each sets for lift
+  params[:arbitrary].each do |lift|
+    lift[:lift][:infos].each do |set|
+      set.first
+    end  
+  end  
+
+{:routine=>{
+  :name=>"Test"}, 
+    :arbitrary=>[
+    {:lift=>{
+      :exercise_id=>"1", 
+      :infos=>[
+      {:weight=>"250", :repetition=>"8"}, 
+      {:weight=>"275", :repetition=>"6"}
+              ]
+            }
+    },
+    {:lift=>{
+      :exercise_id=>"2", 
+      :infos=>[
+        {:weight=>"405", :repetition=>"12"}, 
+        {:weight=>"445", :repetition=>"4"}
+              ]
+            }
+    }
+                ]
+} 
+
+
+<%= form_tag routines_path %>
+
+  <%= label_tag "routine[name]", "Routine Name" %>
+  <%= text_field_tag "routine[name]" %><br />
+    <% 2.times do  %>
+      <%= collection_select("lifts", :exercise_id, Exercise.all, :id, :name) %><br />
+
+      <% 2.times do %>
+        <%= label_tag "lifts[infos][][weight]", "weight" %>
+        <%= text_field_tag "lifts[infos][][weight]" %>
+        
+        <%= label_tag "lifts[infos][][repetition]", "reps" %>
+        <%= text_field_tag "lifts[infos][][repetition]" %><br />
+      <% end %>
+    <% end %>
+  
+
+<%= submit_tag "Submit Routine" %>
+
+
+
+
+
+

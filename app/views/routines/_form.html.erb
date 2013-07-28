@@ -4,22 +4,26 @@
   <%= label_tag "routine[name]", "Routine Name" %>
   <%= text_field_tag "routine[name]" %><br />
 
+  <%= select("arbitrary[][lift]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %><br />
 
-    <%= collection_select("lifts", :exercise_id, Exercise.all, :id, :name) %>
-    <%= label_tag "lifts[infos][][weight]", "weight" %>
-    <%= text_field_tag "lifts[infos][][weight]" %>
-    
-    <%= label_tag "lifts[infos][][repetition]", "reps" %>
-    <%= text_field_tag "lifts[infos][][repetition]" %>
-
+  <%= select("arbitrary[][lift]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %>
   
-
 <%= submit_tag "Submit Routine" %>
 
-  <!-- select("lifts[]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] })  -->
 
 
+<!-- 
+{:routine=>{
+  :name=>"Test"},
+   :arbitrary=>[
+    {
+      :lift=>{
+        :exercise_id=>"1",
+        :infos=>[
+          {:weight=>"250", :repetiton=>"8"}, {:weight=>"275", :repetition=>"6"}
+            ]}}]} -->
 
+<!-- select("lifts[]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] })  -->
 
 <!-- collection_select("lifts[]", :exercise_id, Exercise.all, :id, :name) -->
 
@@ -36,3 +40,22 @@
       Info.create(hash_of_info)
     end
    -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
