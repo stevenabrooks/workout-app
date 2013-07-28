@@ -4,9 +4,9 @@
   <%= label_tag "routine[name]", "Routine Name" %>
   <%= text_field_tag "routine[name]" %><br />
 
-  <%= select("arbitrary[][lift]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %><br />
+  <%= select("arbitrary[][lift][1]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %><br />
 
-  <%= select("arbitrary[][lift]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %>
+ 
   
 <%= submit_tag "Submit Routine" %>
 
