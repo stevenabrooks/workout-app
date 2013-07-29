@@ -4,24 +4,18 @@
   <%= label_tag "routine[name]", "Routine Name" %>
   <%= text_field_tag "routine[name]" %><br />
 
-  <%= select("arbitrary[][lift][][1]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %><br />
-  <% 2.times do %>
-        <%= label_tag "arbitrary[][lift][infos][][weight]", "weight" %>
-        <%= text_field_tag "arbitrary[][lift][infos][][weight]" %>
-        
-        <%= label_tag "arbitrary[][lift][infos][][repetition]", "reps" %>
-        <%= text_field_tag "arbitrary[][lift][infos][][repetition]" %><br />
-      <% end %>
+    <% 2.times do |n| %>
 
-  <%= select("arbitrary[][lift][][2]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %><br />
-  <% 2.times do %>
-        <%= label_tag "lifts[infos][][weight]", "weight" %>
-        <%= text_field_tag "lifts[infos][][weight]" %>
-        
-        <%= label_tag "lifts[infos][][repetition]", "reps" %>
-        <%= text_field_tag "lifts[infos][][repetition]" %><br />
-      <% end %>
+    <%= select("[lifts][][#{n}]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %><br />
+    
+      <%= label_tag "[lifts][][#{n}][infos][][weight]", "weight" %>
+      <%= text_field_tag "[lifts][][#{n}][infos][][weight]" %>
+      
+      <%= label_tag "[lifts][][#{n}][infos][][repetition]", "reps" %>
+      <%= text_field_tag "[lifts][][#{n}][infos][][repetition]" %><br />
+    <% end %>
 
+ 
  
   
 <%= submit_tag "Submit Routine" %>
