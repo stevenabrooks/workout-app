@@ -6,8 +6,13 @@
 </p>
 <p>
   <ul>
-  <% @routine.exercises.each do |exercise| %>
-  <li><%= exercise.name %></li>
+  <% @routine.lifts.each do |lift| %>
+  <li><%= lift.exercise.name %></li>
+    <ul>
+      <% lift.infos.each do |set| %>
+        <li><%= set.weight %> <%= set.repetition %></li>
+      <% end %>
+    </ul>
   <% end %>
 </ul>
 

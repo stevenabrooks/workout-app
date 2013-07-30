@@ -40,19 +40,45 @@ class RoutinesController < ApplicationController
   # POST /routines
   # POST /routines.json
   def create
-    raise params.inspect
+    # raise params.inspect
     @routine = Routine.new(:name => params[:routine][:name])
     @routine.save
 
-    exercise_hash = params[:lifts]
-    exercise = Exercise.find(exercise_hash[:exercise_id].to_i)
-    lift = Lift.create(:exercise_id => exercise.id, :routine_id => @routine.id)
-    exercise_hash[:infos].each do |hash_of_info|
-      info = Info.create(hash_of_info)
-      info.lift_id = lift.id
-      info.save
+    params[:lifts].each do |lift|
+      lift.each do |k,v|
+        exercise = Exercise.find(v[:exercise_id].to_i)
+        lift = Lift.create(:exercise_id => exercise.id, :routine_id => @routine.id)
+        exercise_hash = v[:infos]
+        exercise_hash.each do |hash_of_info|
+          info = Info.create(hash_of_info)
+          info.lift_id = lift.id
+          info.save
+        end
+      end
     end
-    
+
+    # exercise_hash = params[:lifts]
+    # exercise = Exercise.find(exercise_hash[:exercise_id].to_i)
+    # lift = Lift.create(:exercise_id => exercise.id, :routine_id => @routine.id)
+    # exercise_hash[:infos].each do |hash_of_info|
+    #   info = Info.create(hash_of_info)
+    #   info.lift_id = lift.id
+    #   info.save
+    # end
+
+# -------------------------------------    
+# "routine"=>{
+#   "name"=>"Test Routine"},
+#   "lifts"=>[
+#     {"0"=>{
+#       "exercise_id"=>"1",
+#       "infos"=>[
+#         {"weight"=>"155", "repetition"=>"8"}]},
+#     "1"=>{
+#       "exercise_id"=>"4",
+#       "infos"=>[
+#         {"weight"=>"205", "repetition"=>"4"}]}}]
+# -----------------------------------------
 
  # -----------------------------   
  # :lift => {:exercise_id => 1, 
