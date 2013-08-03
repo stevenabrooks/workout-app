@@ -1,3 +1,4 @@
+####################################
 
 <%= form_tag routines_path %>
 
@@ -5,37 +6,35 @@
   <%= text_field_tag "routine[name]" %><br />
 
     <% 2.times do |n| %>
-      
-      <div class="ui-widget">
-        <%= text_field_tag "[lifts][][#{n}][exercise_id]", nil, :placeholder => "Choose Exercise", id: "exercise" %>
-      </div>
-      
-        <%= label_tag "[lifts][][#{n}][infos][][weight]", "weight" %>
-        <%= text_field_tag "[lifts][][#{n}][infos][][weight]" %>
-        
-        <%= label_tag "[lifts][][#{n}][infos][][repetition]", "reps" %>
-        <%= text_field_tag "[lifts][][#{n}][infos][][repetition]" %><br />
+  
+      <fieldset id="exercises">
+        <div class="exercise">
+          <%= select("[lifts][][#{n}]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %>
+          <button class="remove">remove exercise</button>
+        </div>
+      </fieldset>
 
+      <button id="add_exercise">add exercise</button>
+    
     <% end %>
-
+  
 <%= submit_tag "Submit Routine" %>
 
+<script>
+  //Clone and Remove Form Fields
 
-<script type="text/javascript">
-// Exercise AutoComplete
+$('#add_exercise').on('click', function() { 
+    $('#exercises').append('<div class="exercise">
+          <%= select("[lifts][][#{n}]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %>
+          <button class="remove">remove exercise</button>
+        </div>');
+    return false; //prevent form submission
+});
 
-$("#exercise").autocomplete({
-      source: availableExercises
-    });
-  });
-
-$(function() {
-    var availableExercises = [
-      "squat",
-      "sandbag",
-      "salt",
-      "seasalt"
-    ];
-
+$('#exercises').on('click', '.remove', function() {
+    $(this).parent().remove();
+    return false; //prevent form submission
+});
 </script>
-    
+
+######################################
