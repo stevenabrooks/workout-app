@@ -1,8 +1,16 @@
 class Routine < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :date
 
   has_many :lifts
   has_many :exercises, through: :lifts
+
+  def date
+    @date
+  end
+
+  def date=(date_string)
+    @date = date_string.to_date
+  end
 
   # accepts_nested_attributes_for :exercises, allow_destroy: true, :reject_if => lambda { |a| a[:name].blank? }
 
