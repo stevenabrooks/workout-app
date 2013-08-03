@@ -1,0 +1,61 @@
+
+<%= form_tag routines_path %>
+
+  <%= label_tag "routine[name]", "Routine Name" %>
+  <%= text_field_tag "routine[name]" %><br />
+
+    <% 2.times do |n| %>
+      
+      <div class="ui-widget">
+        <%= text_field_tag "[lifts][][#{n}][exercise_id]", nil, :placeholder => "Choose Exercise", id: "exercise" %>
+      </div>
+      
+        <%= label_tag "[lifts][][#{n}][infos][][weight]", "weight" %>
+        <%= text_field_tag "[lifts][][#{n}][infos][][weight]" %>
+        
+        <%= label_tag "[lifts][][#{n}][infos][][repetition]", "reps" %>
+        <%= text_field_tag "[lifts][][#{n}][infos][][repetition]" %><br />
+
+    <% end %>
+
+<%= submit_tag "Submit Routine" %>
+
+
+<script type="text/javascript">
+// Exercise AutoComplete
+
+$("#exercise").autocomplete({
+      source: availableExercises
+    });
+  });
+
+$(function() {
+    var availableExercises = [
+      "squat",
+      "sandbag",
+      "salt",
+      "seasalt"
+    ];
+
+</script>
+    
+    
+<%#= select("[lifts][][#{n}]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
