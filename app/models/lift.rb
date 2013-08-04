@@ -7,3 +7,13 @@ class Lift < ActiveRecord::Base
 end
 
 
+# def self.find_most_weight_used_by_exercise_id(exercise_id)
+#   b = []
+#   a = self.where(:exercise_id => exercise_id)
+#   a.each do |lift|
+#     lift.infos.each do |info|
+#       b << info
+#     end
+#     b.sort_by { |info| info.weight }.reverse
+#   end 
+# end
