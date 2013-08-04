@@ -4,6 +4,9 @@
   <%= label_tag "routine[name]", "Routine Name" %>
   <%= text_field_tag "routine[name]" %><br />
 
+  <%= label_tag "routine[date]", "Date" %>
+  <%= text_field_tag "routine[date]", nil, id: "date" %><br />
+
     <% 2.times do |n| %>
 
     <%= select("[lifts][][#{n}]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %><br />
@@ -32,7 +35,12 @@
   
 <%= submit_tag "Submit Routine" %>
 
-
+<script>
+$(function() {
+    $( "#date" ).datepicker();
+    dateFormat: 'yy-mm-dd';
+  });
+</script>
 
 <!-- 
 {:routine=>{

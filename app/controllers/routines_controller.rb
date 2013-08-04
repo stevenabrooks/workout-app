@@ -41,6 +41,7 @@ class RoutinesController < ApplicationController
   # POST /routines.json
   def create
     @routine = Routine.new(:name => params[:routine][:name])
+    @routine.date = params[:routine][:date]
     @routine.save
 
     params[:lifts].each do |lift|
