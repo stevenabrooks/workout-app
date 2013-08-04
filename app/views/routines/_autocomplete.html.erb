@@ -31,10 +31,9 @@ $("#exercise").autocomplete({
 
 $(function() {
     var availableExercises = [
-      "squat",
-      "sandbag",
-      "salt",
-      "seasalt"
+      <% Exercise.all.each do |exercise| %>
+      '<%= exercise.name %>',
+      <% end %>
     ];
 
 </script>
