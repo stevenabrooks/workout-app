@@ -5,29 +5,29 @@
   <%= label_tag "routine[name]", "Routine Name" %>
   <%= text_field_tag "routine[name]" %><br />
 
-    <% 2.times do |n| %>
+
   
       <fieldset id="exercises">
         <div class="exercise">
-          <%= select("[lifts][][#{n}]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %>
+          <%= select("[lifts][][0]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %>
           <button class="remove">remove exercise</button>
         </div>
       </fieldset>
 
       <button id="add_exercise">add exercise</button>
-    
-    <% end %>
+  
+
   
 <%= submit_tag "Submit Routine" %>
 
 <script>
-  //Clone and Remove Form Fields
+
+var exercises = <%= 'select("[lifts][][1]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] })'.html_safe %>;
 
 $('#add_exercise').on('click', function() { 
-    $('#exercises').append('<div class="exercise">
-          <%= select("[lifts][][#{n}]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %>
-          <button class="remove">remove exercise</button>
-        </div>');
+  
+$('#exercises').append('hello'); 
+    console.log(exercises);
     return false; //prevent form submission
 });
 
@@ -37,4 +37,15 @@ $('#exercises').on('click', '.remove', function() {
 });
 </script>
 
+
+<!-- <div class="exercise">
+          <select id="_lifts__0_exercise_id" name="[lifts][][0][exercise_id]"><option value="1">Squat</option>
+<option value="2">Deadlift</option>
+<option value="3">Bench Press</option>
+<option value="4">Calf Raise</option>
+<option value="5">Dips</option>
+<option value="6">Pullups</option>
+<option value="7">Glute Ham Raise</option></select>
+          <button class="remove">remove exercise</button>
+        </div> -->
 ######################################

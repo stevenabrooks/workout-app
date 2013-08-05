@@ -7,7 +7,7 @@
   <%= label_tag "routine[date]", "Date" %>
   <%= text_field_tag "routine[date]", nil, id: "date" %><br />
 
-    <% 1.times do |n| %>
+    <% 2.times do |n| %>
       
       <div class="ui-widget">
         <%= text_field_tag "[lifts][][#{n}][exercise_id]", nil, :placeholder => "Choose Exercise", id: "exercise" %>
