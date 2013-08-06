@@ -1,0 +1,21 @@
+<script type="text/javascript">
+  
+  $('.add_set').on('click', function() {
+
+    var sets = $('<span class="infos"> \
+            <input type="text" name="[lifts][]['+n+'][infos][][weight]" placeholder="Weight"> \
+            <input type="text" name="[lifts][]['+n+'][infos][][repetition]" placeholder="Repetitions"> \
+            <button class="remove_set">x</button> | <button class="add_set">+</button> \
+          </span>')
+
+    $('.exercise').append(sets);
+    return false;
+
+  });
+
+
+
+
+
+
+</script>

@@ -1,18 +1,23 @@
-####################################
-
 <%= form_tag routines_path %>
 
   <%= label_tag "routine[name]", "Routine Name" %>
   <%= text_field_tag "routine[name]" %><br />
 
+  <%= label_tag "routine[date]", "Date" %>
+  <%= text_field_tag "routine[date]", nil, id: "date" %><br />
 
   
       <fieldset id="exercises">
         <div class="exercise">
           <div class="ui-widget">
-            <%= text_field_tag "[lifts][][0][exercise_id]", nil, :placeholder => "Choose Exercise", class: "ex" %>
+            <input data-n="0" type="text" name="[lifts][][0][exercise_name]" placeholder="Choose Exercise" class="ex">
+            <button class="remove_exercise">x</button>
           </div>
-          <button class="remove">remove exercise</button>
+          <span class="infos">
+            <%= text_field_tag "[lifts][][0][infos][][weight]", nil, :placeholder => "Weight"%>
+            <%= text_field_tag "[lifts][][0][infos][][repetition]", nil, :placeholder => "Repetitions" %>
+            <button class="remove_set">x</button> | <button class="add_set">+</button>
+          </span>
         </div>
       </fieldset>
 
@@ -25,6 +30,10 @@
 <script>
 $(function() {
 
+  $( "#date" ).datepicker({
+      dateFormat: 'yy-mm-dd'
+    });
+
   var n = 0;
 
   $('#add_exercise').on('click', function() { 
@@ -33,23 +42,43 @@ $(function() {
 
     var exercises = $(' <div class="exercise"> \
           <div class="ui-widget"> \
-            <input type="text" name="[lifts][]['+(n += 1)+'][exercise_id]" placeholder="Choose Exercise" class="ex"> \
+            <input data-n="'+(n+=1)+'" type="text" name="[lifts][]['+n+'][exercise_name]" placeholder="Choose Exercise" class="ex"><button class="remove_exercise">x</button> \
           </div> \
-          <button class="remove">remove exercise</button> \
+          <span class="infos"> \
+            <input type="text" name="[lifts][]['+n+'][infos][][weight]" placeholder="Weight"> \
+            <input type="text" name="[lifts][]['+n+'][infos][][repetition]" placeholder="Repetitions"> \
+            <button class="remove_set">x</button> | <button class="add_set">+</button> \
+          </span> \
         </div>');
-
-    console.log(exercises);
-
-    $(exercises).find('.ex').attr('name', '[lifts][]['+n+'][exercise_id]');
-
-    console.log(exercises);
 
 
     $('#exercises').append(exercises);
     return false; //prevent form submission
   });
 
-  $('#exercises').on('click', '.remove', function() {
+  $('#exercises').on('click', '.add_set', function() {
+
+    var num = $(this).parent().parent().find('.ex').data('n');
+
+
+    var sets = $('<span class="infos"> \
+            <input type="text" name="[lifts][]['+num+'][infos][][weight]" placeholder="Weight"> \
+            <input type="text" name="[lifts][]['+num+'][infos][][repetition]" placeholder="Repetitions"> \
+            <button class="remove_set">x</button> | <button class="add_set">+</button> \
+          </span>');
+
+    $(this).parent().parent().append(sets);
+    return false;
+
+  });
+
+  $('#exercises').on('click', '.remove_exercise', function() {
+      $(this).parent().next().remove();
+      $(this).parent().remove();
+      return false; //prevent form submission
+  });
+
+   $('#exercises').on('click', '.remove_set', function() {
       $(this).parent().remove();
       return false; //prevent form submission
   });
