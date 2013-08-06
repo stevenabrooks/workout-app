@@ -9,7 +9,9 @@
   
       <fieldset id="exercises">
         <div class="exercise">
-          <%= select("[lifts][][0]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %>
+          <div class="ui-widget">
+            <%= text_field_tag "[lifts][][#{n}][exercise_id]", nil, :placeholder => "Choose Exercise", id: "exercise" %>
+          </div>
           <button class="remove">remove exercise</button>
         </div>
       </fieldset>
@@ -22,12 +24,11 @@
 
 <script>
 
-var exercises = <%= 'select("[lifts][][1]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] })'.html_safe %>;
+var exercises = $('#exercises').html();
 
 $('#add_exercise').on('click', function() { 
   
-$('#exercises').append('hello'); 
-    console.log(exercises);
+$('#exercises').append(exercises); 
     return false; //prevent form submission
 });
 
@@ -35,7 +36,21 @@ $('#exercises').on('click', '.remove', function() {
     $(this).parent().remove();
     return false; //prevent form submission
 });
+
+var availableExercises = [
+      <% Exercise.all.each do |exercise| %>
+      '<%= exercise.name %>',
+      <% end %>
+    ];
+
+  $("#exercise").autocomplete({
+    source: availableExercises
+  });
+
 </script>
+
+
+
 
 
 <!-- <div class="exercise">
