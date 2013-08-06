@@ -40,14 +40,14 @@ class RoutinesController < ApplicationController
   # POST /routines
   # POST /routines.json
   def create
-    raise params.inspect
+    # raise params.inspect
     @routine = Routine.new(:name => params[:routine][:name])
     @routine.date = params[:routine][:date]
     @routine.save
 
     params[:lifts].each do |lift|
       lift.each do |k,v|
-        exercise = Exercise.find(v[:exercise_id].to_i)
+        exercise = Exercise.find_or_create_by_name(v[:exercise_id])
         lift = Lift.create(:exercise_id => exercise.id, :routine_id => @routine.id)
         exercise_array = v[:infos]
         exercise_array.each do |hash_of_info|

@@ -23,34 +23,46 @@
 <%= submit_tag "Submit Routine" %>
 
 <script>
-var n = 0;
+$(function() {
 
-var exercises = $('#exercises').html();
+  var n = 0;
 
-$('#add_exercise').on('click', function() { 
-  
-  n+=1;  
-  console.log(exercises);
+  $('#add_exercise').on('click', function() { 
 
-  exercises = $(exercises).find('.ex').attr('name', '[lifts][]['+n+'][exercise_id]').parents('.exercise');
+    //n += 1;  
 
-  $('#exercises').append(exercises); 
-  return false; //prevent form submission
-});
+    var exercises = $(' <div class="exercise"> \
+          <div class="ui-widget"> \
+            <input type="text" name="[lifts][]['+(n += 1)+'][exercise_id]" placeholder="Choose Exercise" class="ex"> \
+          </div> \
+          <button class="remove">remove exercise</button> \
+        </div>');
 
-$('#exercises').on('click', '.remove', function() {
-    $(this).parent().remove();
+    console.log(exercises);
+
+    $(exercises).find('.ex').attr('name', '[lifts][]['+n+'][exercise_id]');
+
+    console.log(exercises);
+
+
+    $('#exercises').append(exercises);
     return false; //prevent form submission
+  });
+
+  $('#exercises').on('click', '.remove', function() {
+      $(this).parent().remove();
+      return false; //prevent form submission
+  });
+
+  var availableExercises = [
+        <% Exercise.all.each do |exercise| %>
+        '<%= exercise.name %>',
+        <% end %>
+      ];
+
+  $('#exercises').on('keydown.autocomplete', '.ex', function() {
+    $(this).autocomplete({source: availableExercises});
+  });
+
 });
-
-var availableExercises = [
-      <% Exercise.all.each do |exercise| %>
-      '<%= exercise.name %>',
-      <% end %>
-    ];
-
-$('#exercises').on('keydown.autocomplete', '.ex', function() {
-  $(this).autocomplete({source: availableExercises});
-});
-
 </script>
