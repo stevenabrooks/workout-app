@@ -3,6 +3,9 @@ class Info < ActiveRecord::Base
 
   belongs_to :lift
 
+  def find_routine_by_info
+    self.lift.routine  
+  end
 
   def total_weight_per_info
     self[:repetition] * self[:weight]
@@ -24,4 +27,18 @@ class Info < ActiveRecord::Base
       p compare_infos?(info.total_weight_per_info, infos[index+1].total_weight_per_info) if index < infos.size - 1
     end  
   end
+
+# this would be for the form to happen dynamically
+  # def was_this_info_better_than_last?
+  #   if self.lift.infos.size > 0
+  #     infos = self.lift.infos.last(2)     
+  #   else
+  #   end
+  #   if (infos[1].total_weight_per_info) > (infos[0].total_weight_per_info)
+  #     puts "good set"
+  #   else
+  #     puts "you can do better"
+  #   end
+  # end
+
 end
