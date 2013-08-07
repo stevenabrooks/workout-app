@@ -10,7 +10,7 @@ class Info < ActiveRecord::Base
 
   def exercise_name_from_info
     lift_id = self.lift_id
-    lift = Info.where(:lift_id => a)
+    lift = Lift.where(:id => lift_id).first
     lift.exercise.name
   end
 

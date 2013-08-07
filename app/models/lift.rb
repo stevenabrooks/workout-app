@@ -5,10 +5,33 @@ class Lift < ActiveRecord::Base
   belongs_to :exercise
   has_many :infos, dependent: :destroy
 
-  def was_lift_better_than_last
+  def compared_to_last_lift_weight
     ei = self.exercise_id
     array = Lift.where(:exercise_id => ei).last(2)
     number_difference = array[1].total_weight_per_lift - array[0].total_weight_per_lift
+    number_difference
+  end
+
+  def compared_to_last_lift_weight_percentage
+    ei = self.exercise_id
+    array = Lift.where(:exercise_id => ei).last(2)
+    number1 = (array[1].total_weight_per_lift * 100.0)
+    number2 = (array[0].total_weight_per_lift)
+    percentage = ((number1) / number2) - 100
+    percentage
+  end
+
+  def compared_to_last_lift_reps
+    ei = self.exercise_id
+    array = Lift.where(:exercise_id => ei).last(2)
+    number_difference = array[1].total_reps_per_lift - array[0].total_reps_per_lift
+    number_difference
+  end
+
+  def compared_to_last_lift_sets
+    ei = self.exercise_id
+    array = Lift.where(:exercise_id => ei).last(2)
+    number_difference = array[1].infos.size - array[0].infos.size
     number_difference
   end
 
@@ -29,6 +52,10 @@ class Lift < ActiveRecord::Base
       counter += tw
     end  
     counter
+  end
+
+  def total_sets_per_lift
+    self.infos.size
   end
 
 
