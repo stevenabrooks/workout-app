@@ -15,5 +15,3 @@
 //= require jquery.ui.autocomplete
 //= require jquery.ui.datepicker
 //= require_tree .
-
-
