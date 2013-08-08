@@ -8,7 +8,7 @@ function drawChart() {
   var options = {
     title: 'Your Workout',
     hAxis: {title: 'Exercises'},
-    vAxis: {title: 'Total Weight(pounds)'}
+    vAxis: {title: 'Total Weight (pounds)'}
   };
 
   var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
