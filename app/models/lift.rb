@@ -14,6 +14,12 @@ class Lift < ActiveRecord::Base
     goal
   end
 
+  def lift_date_and_weight
+    array = []
+    array << self.routine.date 
+    array << self.total_weight_per_lift
+  end
+
   def compared_to_last_lift_weight
     ei = self.exercise_id
     array = Lift.where(:exercise_id => ei).last(2)
@@ -44,7 +50,6 @@ class Lift < ActiveRecord::Base
     number_difference
   end
 
-
   def total_weight_per_lift
     counter = 0
     self.infos.each do |info|
@@ -66,7 +71,12 @@ class Lift < ActiveRecord::Base
   def total_sets_per_lift
     self.infos.size
   end
-
+  
+  # def sort_lifts_by_routine_date(exercise_id)
+  #   a = Lift.where(:exercise_id => self.id)
+  #   b = a.sort_by { |lift| lift.routine.date }.reverse     
+  #   b
+  # end
 
   def self.find_most_weight_used_by_exercise_id(exercise_id)
     b = []
