@@ -2,6 +2,7 @@
 
 <p>
   <b>Name:</b>
+  <%= @routine.user.name %><br />
   <%= @routine.name %><br />
   <%= @routine.date %>
 </p>
@@ -17,6 +18,6 @@
   <% end %>
 </ul>
 
-
+<%= link_to 'See Stats', user_path(@routine.user.id) %> |
 <%= link_to 'Edit', edit_routine_path(@routine) %> |
 <%= link_to 'Back', routines_path %>

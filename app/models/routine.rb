@@ -1,6 +1,7 @@
 class Routine < ActiveRecord::Base
   attr_accessible :name, :date, :user_id
 
+  belongs_to :user
   has_many :lifts, dependent: :destroy
   has_many :exercises, through: :lifts
 
