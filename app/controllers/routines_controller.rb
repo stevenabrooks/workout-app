@@ -14,6 +14,7 @@ class RoutinesController < ApplicationController
   # GET /routines/1.json
   def show
     @routine = Routine.find(params[:id])
+    @graph = @routine.graph
 
     respond_to do |format|
       format.html # show.html.erb

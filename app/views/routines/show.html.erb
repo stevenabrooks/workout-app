@@ -19,36 +19,27 @@
 </ul>
 
 ###################################
-<html>
-  <head>
+
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Exercises', 'Sales', 'Expenses'],
-          ['Bench',  1000,      400],
-          ['Deadlift',  1170,      460],
-          ['Dips',  660,       1120],
-          ['Chins',  1030,      540]
-        ]);
+        var data = google.visualization.arrayToDataTable(<%= raw @graph %>);
 
         var options = {
           title: 'Your Workout',
           hAxis: {title: 'Exercises'},
-          vAxis: {title: 'Total Weight'}
+          vAxis: {title: 'Total Weight(pounds)'}
         };
 
         var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
     </script>
-  </head>
-  <body>
+
     <div id="chart_div" style="width: 900px; height: 500px;"></div>
-  </body>
-</html>
+
 ###################################
 <br />
 

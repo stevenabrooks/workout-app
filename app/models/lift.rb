@@ -5,6 +5,15 @@ class Lift < ActiveRecord::Base
   belongs_to :exercise
   has_many :infos, dependent: :destroy
 
+  def chart_info_for_lift
+    goal = []
+    goal << self.exercise.name
+    self.infos.each do |info|
+      goal << info.total_weight_per_info
+    end
+    goal
+  end
+
   def compared_to_last_lift_weight
     ei = self.exercise_id
     array = Lift.where(:exercise_id => ei).last(2)

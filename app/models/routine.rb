@@ -5,6 +5,23 @@ class Routine < ActiveRecord::Base
   has_many :lifts, dependent: :destroy
   has_many :exercises, through: :lifts
 
+  def graph_first_line
+    array = ["exercise"]
+    self.most_reps.times do |n|
+      array << "set #{n+1}"
+    end
+    array
+  end
+
+  def graph
+    array = []
+    array << self.graph_first_line
+    self.lifts.each do |lift|
+      array << lift.chart_info_for_lift
+    end
+    array
+  end
+
   def total_weight_per_routine
     counter = 0
     self.lifts.each do |lift|
@@ -30,6 +47,14 @@ class Routine < ActiveRecord::Base
       counter += tw
     end  
     counter
+  end
+
+  def most_reps
+    size = 0
+    self.lifts.each do |lift|
+      size = lift.infos.size if lift.infos.size > size
+    end
+    size
   end
 
 end
