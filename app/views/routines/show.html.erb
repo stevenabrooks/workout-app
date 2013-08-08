@@ -20,25 +20,15 @@
 
 ###################################
 
+  <div id="chart_div" style="width: 900px; height: 500px;"></div>
+
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable(<%= raw @graph %>);
 
-        var options = {
-          title: 'Your Workout',
-          hAxis: {title: 'Exercises'},
-          vAxis: {title: 'Total Weight(pounds)'}
-        };
-
-        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
+    <script>
+      window.graph = <%= raw @graph %>;
     </script>
 
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+    <script src="/assets/routines.js"></script>
 
 ###################################
 <br />
