@@ -28,6 +28,10 @@ class Info < ActiveRecord::Base
     end  
   end
 
+  def info_string
+    "#{self.repetition} reps at #{self.weight} pounds"
+  end
+
 # this would be for the form to happen dynamically
   # def was_this_info_better_than_last?
   #   if self.lift.infos.size > 0

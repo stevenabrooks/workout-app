@@ -14,10 +14,33 @@ class Lift < ActiveRecord::Base
     goal
   end
 
+  # ["10 reps at 15 pounds", "10 reps at 20 pounds", "10 reps at 25 pounds"]
+  def infos_string_array
+    array = []
+    self.infos.each do |info|
+      array << info.info_string
+    end
+    array
+  end
+
+  def something
+    array = []
+    array << self.lift_date_and_weight_string
+    array << self.infos_string_array
+    array 
+  end
+
   def lift_date_and_weight
     array = []
     array << self.routine.date 
     array << self.total_weight_per_lift
+  end
+
+  # ["2013-08-01", 600] 
+  def lift_date_and_weight_string
+    array = []
+    array << self.routine.date 
+    array << self.total_weight_per_lift.to_s
   end
 
   def compared_to_last_lift_weight
