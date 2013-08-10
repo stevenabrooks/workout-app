@@ -1,5 +1,5 @@
 class Routine < ActiveRecord::Base
-  attr_accessible :name, :date, :user_id
+  attr_accessible :name, :date, :user_id, :bodyweight
 
   belongs_to :user
   has_many :lifts, dependent: :destroy
