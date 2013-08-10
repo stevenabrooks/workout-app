@@ -6,7 +6,7 @@
   <%= label_tag "routine[date]", "Date" %>
   <%= text_field_tag "routine[date]", nil, id: "date" %><br />
 
-  <%= label_tag "routine[bodyweight]", "Bodyweight" %>
+  <%= label_tag "routine[bodyweight]", "Current Bodyweight" %>
   <%= text_field_tag "routine[bodyweight]" %><br />
 
   
@@ -14,6 +14,7 @@
         <div class="exercise">
           <div class="ui-widget">
             <input data-n="0" type="text" name="[lifts][][0][exercise_name]" placeholder="Choose Exercise" class="ex">
+            <input type="checkbox" name="[lifts][][0][bodyweight_exercise]" value="yes">Bodyweight Exercise?<br>
             <button class="remove_exercise">x</button>
           </div>
           <span class="infos">
