@@ -57,6 +57,10 @@ class Routine < ActiveRecord::Base
     size
   end
 
+  def self.by_date
+    self.all.sort_by { |routine| routine.date }
+  end
+
 
 end
 
