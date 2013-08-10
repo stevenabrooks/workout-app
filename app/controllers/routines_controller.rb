@@ -44,7 +44,8 @@ class RoutinesController < ApplicationController
     # raise params.inspect
     @routine = Routine.new(:name => params[:routine][:name])
     @routine.date = params[:routine][:date]
-    @routine.user_id = User.find(1) 
+    @routine.bodyweight = params[:routine][:bodyweight].to_i
+    @routine.user_id = 1 
     @routine.save
 
     params[:lifts].each do |lift|
