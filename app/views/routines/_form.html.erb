@@ -14,7 +14,7 @@
         <div class="exercise">
           <div class="ui-widget">
             <input data-n="0" type="text" name="[lifts][][0][exercise_name]" placeholder="Choose Exercise" class="ex">
-            <!-- <input type="checkbox" name="[lifts][][0][bodyweight_exercise]" value="yes">Bodyweight Exercise?<br> -->
+            <input type="checkbox" name="[lifts][][0][bodyweight_exercise]" value="yes">Bodyweight Exercise?<br>
             <button class="remove_exercise">x</button>
           </div>
           <span class="infos">
@@ -46,7 +46,7 @@ $(function() {
 
     var exercises = $(' <div class="exercise"> \
           <div class="ui-widget"> \
-            <input data-n="'+(n+=1)+'" type="text" name="[lifts][]['+n+'][exercise_name]" placeholder="Choose Exercise" class="ex"><button class="remove_exercise">x</button> \
+            <input data-n="'+(n+=1)+'" type="text" name="[lifts][]['+n+'][exercise_name]" placeholder="Choose Exercise" class="ex"><input type="checkbox" name="[lifts][]['+n+'][bodyweight_exercise]" value="yes">Bodyweight Exercise?<br><button class="remove_exercise">x</button> \
           </div> \
           <span class="infos"> \
             <input type="text" name="[lifts][]['+n+'][infos][][weight]" placeholder="Weight"> \

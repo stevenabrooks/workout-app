@@ -56,12 +56,12 @@ class RoutinesController < ApplicationController
       lift.each do |k,v|
         exercise = Exercise.find_or_create_by_name(v[:exercise_name])
         lift = Lift.create(:exercise_id => exercise.id, :routine_id => @routine.id)
-          # if v[:bodyweight_exercise] == "yes"
-          #   v[:infos].each do |info|
-          #     info[:weight] = info[:weight].to_i + @routine.bodyweight
-          #   end
-          # else
-          # end
+          if v[:bodyweight_exercise] == "yes"
+            v[:infos].each do |info|
+              info[:weight] = info[:weight].to_i + @routine.bodyweight
+            end
+          else
+          end
         exercise_array = v[:infos]
         exercise_array.each do |hash_of_info|
           info = Info.create(hash_of_info)
