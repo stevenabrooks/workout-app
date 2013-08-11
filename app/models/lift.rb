@@ -14,13 +14,18 @@ class Lift < ActiveRecord::Base
     goal
   end
 
-  # ["10 reps at 15 pounds", "10 reps at 20 pounds", "10 reps at 25 pounds"]
+# ["2013-08-11", 2160, "8 reps at 45 pounds", "8 reps at 90 pounds", "8 reps at 135 pounds"]
   def infos_string_array
+    array = self.lift_date_and_weight
+    array << self.infos_string
+  end
+
+  def infos_string
     array = []
     self.infos.each do |info|
       array << info.info_string
     end
-    array
+    array.join(", ")
   end
 
   def something

@@ -8,15 +8,12 @@
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var dataTable = new google.visualization.DataTable();
-        dataTable.addColumn('string', 'Year');
-        dataTable.addColumn('number', 'Sales');
+        dataTable.addColumn('string', 'Date');
+        dataTable.addColumn('number', 'Total Weight');
         // A column for custom tooltip content
         dataTable.addColumn({type: 'string', role: 'tooltip'});
         dataTable.addRows([
-          ['2010', 600, '$600K in our first year!'],
-          ['2011', 1500, 'Sunspot activity made this our best year ever!'],
-          ['2012', 800, '$800K in 2012.'],
-          ['2013', 1000, '$1M in sales last year.']
+          ["2013-08-11", 2160, "8 reps at 45 pounds, 8 reps at 90 pounds, 8 reps at 135 pounds"], ["2013-08-12", 3160, "8 reps at 45 pounds, 8 reps at 90 pounds, 8 reps at 135 pounds"]  
       ]);
 
       var options = { tooltip: 
