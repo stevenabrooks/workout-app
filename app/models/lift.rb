@@ -61,11 +61,12 @@ class Lift < ActiveRecord::Base
   end
 
   def compared_to_last_lift_weight_percentage
+    debugger
     ei = self.exercise_id
     array = Lift.where(:exercise_id => ei).last(2)
-    number1 = (array[1].total_weight_per_lift * 100.0)
-    number2 = (array[0].total_weight_per_lift)
-    percentage = ((number1) / number2) - 100
+    number1 = (array[1].total_weight_per_lift)
+    number2 = (array[0].total_weight_per_lift).to_f
+    percentage = ((number1) / number2) * 100.00
     percentage
   end
 
