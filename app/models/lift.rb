@@ -14,6 +14,7 @@ class Lift < ActiveRecord::Base
     goal
   end
 
+
 # ["Reverse DB Flys", 150, 200, 250, "10 reps at 15 pounds, 10 reps at 20 pounds, 10 reps at 25 pounds"] 
   def routine_tooltip
     array = self.chart_info_for_lift
@@ -33,7 +34,7 @@ class Lift < ActiveRecord::Base
     array.join(", ")
   end
 
-  def something
+  def close_to_accurate
     array = []
     array << self.lift_date_and_weight_string
     array << self.infos_string_array

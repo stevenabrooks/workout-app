@@ -10,10 +10,10 @@
 <p>
   <ul>
   <% @routine.lifts.each do |lift| %>
-  <li><%= lift.exercise.name %></li>
+  <%= lift.exercise.name %>
     <ul>
       <% lift.infos.each do |set| %>
-        <li><%= set.weight %> <%= set.repetition %></li>
+        Set <ul>Weight: <%= set.weight %> Reps: <%= set.repetition %></ul><br />
       <% end %>
     </ul>
   <% end %>

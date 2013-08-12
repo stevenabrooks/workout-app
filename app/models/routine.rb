@@ -16,10 +16,46 @@ class Routine < ActiveRecord::Base
   def graph
     array = []
     array << self.graph_first_line
-    self.lifts.each do |lift|
-      array << lift.chart_info_for_lift
+    self.something.each do |lift|
+      array << lift
     end
     array
+  end
+
+  def lifts_array
+    array2 = []
+    self.lifts.each do |lift|
+      array2 << lift.chart_info_for_lift
+    end
+    array2
+  end
+
+  def max_size
+    max = 0
+    array2 = self.lifts_array
+    array2.each do |array|
+      if array.size > max 
+        max = array.size
+      else
+      end
+    end
+    max
+  end
+
+# [["Reverse DB Flys", 150, 200, 250], ["DB Shrugs", 1800, 1440, 1680], ["Dips", 0, 360, 270], ["Pullups", 50, 40, 60], ["Seated DB Cleans", 160, 200, 200], ["Reverse Wrist Curls", 350, 400, 450], ["Toe to Bar", 0, 0, 0]] 
+  def something
+    max = self.max_size
+    arrays = self.lifts_array
+    arrays.each do |array|
+      if array.size < max 
+        difference = max - array.size
+        difference.times do 
+          array << 0
+        end
+      else
+      end
+    end
+    arrays
   end
 
   def total_weight_per_routine
