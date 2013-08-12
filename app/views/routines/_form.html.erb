@@ -14,18 +14,18 @@
         <div class="exercise">
           <div class="ui-widget">
             <input data-n="0" type="text" name="[lifts][][0][exercise_name]" placeholder="Choose Exercise" class="ex">
-            <input type="checkbox" name="[lifts][][0][bodyweight_exercise]" value="yes">Bodyweight Exercise?<br>
             <button class="remove_exercise">x</button>
+            <input type="checkbox" name="[lifts][][0][bodyweight_exercise]" value="yes">Bodyweight Exercise?<br>
           </div>
           <span class="infos">
             <%= text_field_tag "[lifts][][0][infos][][weight]", nil, :placeholder => "Weight"%>
             <%= text_field_tag "[lifts][][0][infos][][repetition]", nil, :placeholder => "Repetitions" %>
-            <button class="remove_set">x</button> | <button class="add_set">+</button>
+            <button class="remove_set">x</button> | <button class="add_set">+</button><br />
           </span>
         </div>
       </fieldset>
 
-      <button id="add_exercise">add exercise</button>
+      <button id="add_exercise">Add Exercise</button><br />
   
 
   
@@ -46,12 +46,12 @@ $(function() {
 
     var exercises = $(' <div class="exercise"> \
           <div class="ui-widget"> \
-            <input data-n="'+(n+=1)+'" type="text" name="[lifts][]['+n+'][exercise_name]" placeholder="Choose Exercise" class="ex"><input type="checkbox" name="[lifts][]['+n+'][bodyweight_exercise]" value="yes">Bodyweight Exercise?<br><button class="remove_exercise">x</button> \
+            <input data-n="'+(n+=1)+'" type="text" name="[lifts][]['+n+'][exercise_name]" placeholder="Choose Exercise" class="ex"><button class="remove_exercise">x</button><input type="checkbox" name="[lifts][]['+n+'][bodyweight_exercise]" value="yes">Bodyweight Exercise?<br> \
           </div> \
           <span class="infos"> \
             <input type="text" name="[lifts][]['+n+'][infos][][weight]" placeholder="Weight"> \
             <input type="text" name="[lifts][]['+n+'][infos][][repetition]" placeholder="Repetitions"> \
-            <button class="remove_set">x</button> | <button class="add_set">+</button> \
+            <button class="remove_set">x</button> | <button class="add_set">+</button><br /> \
           </span> \
         </div>');
 
@@ -68,7 +68,7 @@ $(function() {
     var sets = $('<span class="infos"> \
             <input type="text" name="[lifts][]['+num+'][infos][][weight]" placeholder="Weight"> \
             <input type="text" name="[lifts][]['+num+'][infos][][repetition]" placeholder="Repetitions"> \
-            <button class="remove_set">x</button> | <button class="add_set">+</button> \
+            <button class="remove_set">x</button> | <button class="add_set">+</button><br /> \
           </span>');
 
     $(this).parent().parent().append(sets);
