@@ -14,13 +14,13 @@
       </div>
     <%#= select("[lifts][][#{n}]", "exercise_id", Exercise.all.collect {|p| [ p.name, p.id] }) %><br />
     
-      <%= label_tag "[lifts][][#{n}][infos][][weight]", "weight" %>
+    <%= label_tag "[lifts][][#{n}][infos][][weight]", "weight" %>
       <%= text_field_tag "[lifts][][#{n}][infos][][weight]" %>
       
       <%= label_tag "[lifts][][#{n}][infos][][repetition]", "reps" %>
-      <%= text_field_tag "[lifts][][#{n}][infos][][repetition]" %><br />
+    <%= text_field_tag "[lifts][][#{n}][infos][][repetition]" %><br />
 
-      <%= label_tag "[lifts][][#{n}][infos][][weight]", "weight" %>
+    <%= label_tag "[lifts][][#{n}][infos][][weight]", "weight" %>
       <%= text_field_tag "[lifts][][#{n}][infos][][weight]" %>
       
       <%= label_tag "[lifts][][#{n}][infos][][repetition]", "reps" %>
