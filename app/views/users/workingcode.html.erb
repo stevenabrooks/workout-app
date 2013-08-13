@@ -7,17 +7,23 @@
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
-        var data = google.visualization.arrayToDataTable(<%= raw @total_graph %>);
+        var dataTable = new google.visualization.DataTable();
+        dataTable.addColumn('string', 'Date');
+        dataTable.addColumn('number', 'Total Weight');
+        // A column for custom tooltip content
+        dataTable.addColumn({type: 'string', role: 'tooltip'});
+        dataTable.addRows([
+          ["2013-08-11", 2160, "8 reps at 45 pounds, 8 reps at 90 pounds, 8 reps at 135 pounds"], ["2013-08-12", 3160, "8 reps at 45 pounds, 8 reps at 90 pounds, 8 reps at 135 pounds"]  
+      ]);
 
-        var options = {
-          title: 'Total Weight Over Time'
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-        chart.draw(data, {title: "DB Reverse Flys", width: 800, height: 600, 
-                          vAxis: {title: "Total Weight"},
-                          hAxis: {title: "Date"}});
-      }
+      var options = {tooltip: 
+                    {isHhml: true}, 
+                    title: 'Your Exercise', 
+                    hAxis: {title: 'Date'},
+                    vAxis: {title: 'Total Weight (pounds)'} };
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      chart.draw(dataTable, options);
+}
     </script>
   </head>
   <body>
@@ -25,29 +31,70 @@
   </body>
 </html>
 
-####################################################
+<%= link_to 'Home', routines_path %>
 
 
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
 
-google.setOnLoadCallback(drawChart);
+########################################
 
-function drawChart() {
-  var dataTable = new google.visualization.DataTable();
-  dataTable.addColumn('string', 'Year');
-  dataTable.addColumn('number', 'Sales');
-  // A column for custom tooltip content
-  dataTable.addColumn({type: 'string', role: 'tooltip'});
-  dataTable.addRows([
-    ['2010', 600, '$600K in our first year!'],
-    ['2011', 1500, 'Sunspot activity made this our best year ever!'],
-    ['2012', 800, '$800K in 2012.'],
-    ['2013', 1000, '$1M in sales last year.']
-  ]);
 
-  var options = { legend: 'none' };
-  var chart = new google.visualization.ColumnChart(document.getElementById('col_chart_custom_tooltip'));
-  chart.draw(dataTable, options);
-}
-</script
+<script type="text/javascript" src="//www.google.com/jsapi"></script>  
+<script type="text/javascript">  
+google.load('visualization', '1', { packages : ['controls'] } );  
+google.setOnLoadCallback(createTable);  
+  
+function createTable() {  
+  // Create the dataset (DataTable)  
+  var myData = new google.visualization.DataTable();  
+  myData.addColumn('date', 'Date');  
+  myData.addColumn('number', 'Weight');  
+  myData.addRows([  
+    [new Date(2014, 6, 12), 9],      
+    [new Date(2014, 6, 13), 8],      
+    [new Date(2014, 6, 14), 10],      
+    [new Date(2014, 6, 15), 8],      
+    [new Date(2014, 6, 16), 0]
+  ]);  
+  
+  // Create a dashboard.  
+  var dash_container = document.getElementById('dashboard_div'),  
+    myDashboard = new google.visualization.Dashboard(dash_container);  
+  
+  // Create a date range slider  
+  var myDateSlider = new google.visualization.ControlWrapper({  
+    'controlType': 'ChartRangeFilter',  
+    'containerId': 'control_div',  
+    'options': {  
+      'filterColumnLabel': 'Date'  
+    }  
+  });  
+  
+  // Table visualization  
+  var myTable = new google.visualization.ChartWrapper({  
+    'chartType' : 'Table',  
+    'containerId' : 'table_div'  
+  });  
+  
+  // Bind myTable to the dashboard, and to the controls  
+  // this will make sure our table is update when our date changes  
+  myDashboard.bind(myDateSlider, myTable);  
+  
+  // Line chart visualization  
+  var myLine = new google.visualization.ChartWrapper({  
+    'chartType' : 'LineChart',  
+    'containerId' : 'line_div',  
+  });  
+    
+  // Bind myLine to the dashboard, and to the controls  
+  // this will make sure our line chart is update when our date changes  
+  myDashboard.bind(myDateSlider, myLine );  
+  
+  myDashboard.draw(myData);  
+}  
+</script>  
+  
+<div id="dashboard_div">  
+  <div id="control_div"><!-- Controls renders here --></div>  
+  <div id="line_div"><!-- Line chart renders here --></div>  
+  <div id="table_div"><!-- Table renders here --></div>  
+</div>  
