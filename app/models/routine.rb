@@ -5,13 +5,16 @@ class Routine < ActiveRecord::Base
   has_many :lifts, dependent: :destroy
   has_many :exercises, through: :lifts
 
+
+# ["exercise", "set 1", "tooltip", "set 2", "tooltip", "set 3", "tooltip", "set 4", "tooltip"] 
   def graph_first_line
     array = ["exercise"]
     self.most_reps.times do |n|
-      array << "set #{n+1}"
+      array << "set #{n+1}" 
+      array << 'string'
     end
     array
-  end
+  end    
 
   def graph
     array = []
@@ -48,9 +51,11 @@ class Routine < ActiveRecord::Base
     arrays = self.lifts_array
     arrays.each do |array|
       if array.size < max 
-        difference = max - array.size
+        difference1 = max - array.size
+        difference = difference1 / 2
         difference.times do 
           array << 0
+          array << "0"
         end
       else
       end

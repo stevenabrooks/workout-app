@@ -5,6 +5,15 @@ google.setOnLoadCallback(drawChart);
 function drawChart() {
   var data = google.visualization.arrayToDataTable(graph);
 
+  data.setColumnProperty(2, 'role', 'tooltip');
+  data.setColumnProperty(4, 'role', 'tooltip');
+  data.setColumnProperty(6, 'role', 'tooltip');
+  data.setColumnProperty(8, 'role', 'tooltip');
+  data.setColumnProperty(10, 'role', 'tooltip');
+  
+
+
+
   var options = {
     title: 'Your Workout',
     hAxis: {title: 'Exercises'},

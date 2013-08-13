@@ -1,0 +1,35 @@
+[
+
+  ["exercise", "set 1", "string", "set 2", "string", "set 3", "string", "set 4", "string", "set 5", "string"],
+  ["Hip Abductor Machine", 600, "10 reps at 60 pounds", 700, "10 reps at 70 pounds", 800, "10 reps at 80 pounds", 900, "10 reps at 90 pounds", 1000, "10 reps at 100 pounds"],
+  ["Squats", 1350, "10 reps at 135 pounds", 1850, "10 reps at 185 pounds", 2250, "10 reps at 225 pounds", 0, 0, 0, 0],
+  ["DB RDLs", 400, "8 reps at 50 pounds", 480, "8 reps at 60 pounds", 560, "8 reps at 70 pounds", 0, 0, 0, 0],
+  ["Standing Calf Raises", 360, "8 reps at 45 pounds", 720, "8 reps at 90 pounds", 1080, "8 reps at 135 pounds", 0, 0, 0, 0]
+
+] 
+
+  def chart_info_for_lift
+    goal = []
+    goal << self.exercise.name
+    self.infos.each do |info|
+      goal << info.total_weight_per_info
+      goal << info.info_string
+    end
+    goal
+  end
+
+  def graph_first_line
+    array = ["exercise"]
+    self.most_reps.times do |n|
+      array << "set #{n+1}" 
+      array << "tooltip"
+    end
+    array
+  end  
+
+
+  [
+    ["exercise", "set 1", 'string', "set 2", 'string', "set 3", 'string', "set 4", 'string', "set 5", 'string'],
+    ["squats", 600, "60 x 10", 800, "80 x 10", 1000, "100 x 10", 1200, "120 x 10", 1400, "140 x 10"],
+    ["deadlifts", 600, "60 x 10", 800, "80 x 10", 1000, "100 x 10", 0, "0", 0, "0"]
+  ]

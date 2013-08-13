@@ -10,6 +10,7 @@ class Lift < ActiveRecord::Base
     goal << self.exercise.name
     self.infos.each do |info|
       goal << info.total_weight_per_info
+      goal << info.info_string
     end
     goal
   end
