@@ -102,6 +102,21 @@ class Routine < ActiveRecord::Base
     self.all.sort_by { |routine| routine.date }
   end
 
+  def tooltip
+    array = []
+    number = self.max_size / 2
+    number.times do |n|
+      array << "data.setColumnProperty(#{(n+1)*2}, 'role', 'tooltip');"
+    end
+    array
+  end
+
+  def final_tooltip
+    self.tooltip.each do |arg|
+      arg
+    end
+  end
+
 
 end
 

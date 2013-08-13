@@ -5,14 +5,11 @@ google.setOnLoadCallback(drawChart);
 function drawChart() {
   var data = google.visualization.arrayToDataTable(graph);
 
-  data.setColumnProperty(2, 'role', 'tooltip');
-  data.setColumnProperty(4, 'role', 'tooltip');
-  data.setColumnProperty(6, 'role', 'tooltip');
-  data.setColumnProperty(8, 'role', 'tooltip');
-  data.setColumnProperty(10, 'role', 'tooltip');
-  
-
-
+// loops over each string in an array and 'eval' evaluates
+// the string as a javascript method
+  $(args).each(function(i,value){
+    eval(value);
+  });
 
   var options = {
     title: 'Your Workout',
@@ -29,3 +26,11 @@ function drawChart() {
 // ["Squats", 1350, 1850, 2250, 0, 0], 
 // ["DB RDLs", 400, 480, 560, 0, 0], 
 // ["Standing Calf Raises", 360, 720, 1080, 0, 0]] 
+
+
+
+  // data.setColumnProperty(2, 'role', 'tooltip');
+  // data.setColumnProperty(4, 'role', 'tooltip');
+  // data.setColumnProperty(6, 'role', 'tooltip');
+  // data.setColumnProperty(8, 'role', 'tooltip');
+  // data.setColumnProperty(10, 'role', 'tooltip');
