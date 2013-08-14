@@ -117,7 +117,6 @@ class Routine < ActiveRecord::Base
     end
   end
 
-
 end
 
 

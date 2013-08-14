@@ -12,5 +12,21 @@ class User < ActiveRecord::Base
   array
   end
 
+  def my_lifts
+    array = []
+    self.routines.each do |routine|
+      array << routine.lifts
+    end
+    array.flatten
+  end
+
+  def dash
+    array = []
+    self.my_lifts.each do |lift|
+      array << lift.dash_array
+    end
+    array
+  end
+
 end
 

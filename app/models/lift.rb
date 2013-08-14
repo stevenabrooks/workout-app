@@ -150,4 +150,50 @@ class Lift < ActiveRecord::Base
     b.first.total_weight_per_info
   end 
 
+  def dash_array
+    array = []
+    string = "new Date(#{self.routine.date.gsub(/\-/, ", ")})"
+    # array << self.total_weight_per_lift
+    # array << "#{self.exercise.name}"
+  end
+
+
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
