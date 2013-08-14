@@ -151,10 +151,8 @@ class Lift < ActiveRecord::Base
   end 
 
   def dash_array
-    array = []
-    string = "new Date(#{self.routine.date.gsub(/\-/, ", ")})"
-    # array << self.total_weight_per_lift
-    # array << "#{self.exercise.name}"
+    array = ""
+    array << "[new Date(#{self.routine.date.gsub(/\-/, ", ")}), #{self.total_weight_per_lift}, '#{self.exercise.name}']"
   end
 
 

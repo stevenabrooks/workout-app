@@ -2,6 +2,17 @@
 <script type="text/javascript">  
 google.load('visualization', '1', { packages : ['controls'] } );  
 google.setOnLoadCallback(createTable);  
+
+var user_dash = <%= raw @user.dash %>;
+
+var add_rows_string = "myData.addRows([";
+
+$(user_dash).each(function(i,value){
+  add_rows_string += value;
+  add_rows_string += ', ';
+});
+
+add_rows_string += '])';
   
 function createTable() {  
   // Create the dataset (DataTable)  
@@ -9,14 +20,7 @@ function createTable() {
   myData.addColumn('date', 'Date');  
   myData.addColumn('number', 'Total Weight');
   myData.addColumn('string', 'Exercise Name');   
-  myData.addRows([  
-    [new Date(2014, 6, 12), 90, "Squat"],      
-    [new Date(2014, 6, 13), 80, "Squat"],      
-    [new Date(2014, 6, 14), 100, "Deadlift"],      
-    [new Date(2014, 6, 15), 80, "Squat"],      
-    [new Date(2014, 6, 16), 70, "Squat"]
-  ]);  
-  
+  eval(add_rows_string);
   // Create a dashboard.  
   var dash_container = document.getElementById('dashboard_div'),  
     myDashboard = new google.visualization.Dashboard(dash_container);  

@@ -1,25 +1,25 @@
 //load google graph api
 
-google.load("visualization", "1", {packages:["corechart"]});
-google.setOnLoadCallback(drawChart);
-function drawChart() {
-  var data = google.visualization.arrayToDataTable(graph);
+// google.load("visualization", "1", {packages:["corechart"]});
+// google.setOnLoadCallback(drawChart);
+// function drawChart() {
+//   var data = google.visualization.arrayToDataTable(graph);
 
-// loops over each string in an array and 'eval' evaluates
-// the string as a javascript method
-  $(args).each(function(i,value){
-    eval(value);
-  });
+// // loops over each string in an array and 'eval' evaluates
+// // the string as a javascript method
+//   $(args).each(function(i,value){
+//     eval(value);
+//   });
 
-  var options = {
-    title: 'Your Workout',
-    hAxis: {title: 'Exercises'},
-    vAxis: {title: 'Total Weight (pounds)'}
-  };
+//   var options = {
+//     title: 'Your Workout',
+//     hAxis: {title: 'Exercises'},
+//     vAxis: {title: 'Total Weight (pounds)'}
+//   };
 
-  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-  chart.draw(data, options);
-}
+//   var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+//   chart.draw(data, options);
+// }
 
 // [["exercise", "set 1", "set 2", "set 3", "set 4", "set 5"], 
 // ["Hip Abductor Machine", 600, 700, 800, 900, 1000], 
