@@ -12,7 +12,7 @@ function createTable() {
   myData.addRows([  
     [new Date(2014, 6, 12), 90, "Squat"],      
     [new Date(2014, 6, 13), 80, "Squat"],      
-    [new Date(2014, 6, 14), 100, "Squat"],      
+    [new Date(2014, 6, 14), 100, "Deadlift"],      
     [new Date(2014, 6, 15), 80, "Squat"],      
     [new Date(2014, 6, 16), 70, "Squat"]
   ]);  
@@ -26,9 +26,16 @@ function createTable() {
     'controlType': 'ChartRangeFilter',  
     'containerId': 'control_div',  
     'options': {  
-      'filterColumnLabel': 'Date'  
-    }  
-  });  
+        'filterColumnLabel': 'Date',
+        ui: {
+            chartView: {
+                columns: [0, 1]
+            }
+        }
+    }
+});  
+
+  
   
   // Table visualization  
   var myTable = new google.visualization.ChartWrapper({  
@@ -60,3 +67,5 @@ function createTable() {
   <div id="line_div"><!-- Line chart renders here --></div>  
   <div id="table_div"><!-- Table renders here --></div>  
 </div>  
+
+<%= link_to 'Home', routines_path %>
