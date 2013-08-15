@@ -41,10 +41,17 @@ function createTable() {
 
   // Create the category filter
   var categoryFilter = new google.visualization.ControlWrapper({  
-    'controlType': 'CategoryFilter',  
-    'containerId': 'category_filter_div',  
-    'options': {  
-        'filterColumnLabel': 'Exercise Name'
+    controlType: 'CategoryFilter',  
+    containerId: 'category_filter_div',  
+    options: {  
+        filterColumnLabel: 'Exercise Name',
+        ui: {
+            allowMultiple: false,
+            allowNone: false
+        }
+    },
+    state: {
+        selectedValues: ['Squats']
     }
 }); 
   
