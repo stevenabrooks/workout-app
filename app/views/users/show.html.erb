@@ -44,16 +44,9 @@ function createTable() {
     controlType: 'CategoryFilter',  
     containerId: 'category_filter_div',  
     options: {  
-        filterColumnLabel: 'Exercise Name',
-        ui: {
-            allowMultiple: false,
-            allowNone: false
-        }
-    },
-    state: {
-        selectedValues: ['Squats']
+        filterColumnLabel: 'Exercise Name'
     }
-}); 
+});
   
   // Table visualization  
   var myTable = new google.visualization.ChartWrapper({  
@@ -91,3 +84,22 @@ function createTable() {
 </div>  
 
 <%= link_to 'Home', routines_path %>
+
+
+
+
+<!-- code for starting line graph at an exercise -->
+<!-- var categoryFilter = new google.visualization.ControlWrapper({  
+    controlType: 'CategoryFilter',  
+    containerId: 'category_filter_div',  
+    options: {  
+        filterColumnLabel: 'Exercise Name',
+        ui: {
+            allowMultiple: false,
+            allowNone: false
+        }
+    },
+    state: {
+        selectedValues: ['Squats']
+    }
+}); -->
