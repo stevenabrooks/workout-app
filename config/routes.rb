@@ -12,6 +12,10 @@ Workout::Application.routes.draw do
 
   resources :users
 
+  get 'login', :to => 'sessions#new'
+  delete 'logout', :to => 'sessions#destroy'
+  post '/sessions', :to => 'sessions#create'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -62,7 +66,7 @@ Workout::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'routines#index'
+  root :to => 'users#new'
 
   # See how all your routes lay out with "rake routes"
 
