@@ -1,24 +1,24 @@
-<h1>Listing routines</h1>
+  <h1>Routines</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<% @routines.each do |routine| %>
-  <tr>
-    <td><%= routine.name %> - <%= routine.date %></td>
-    <td><%= link_to 'Show', routine, class: 'btn' %></td>
-    <td><%= link_to 'Edit', edit_routine_path(routine), class: 'btn-small' %></td>
-    <td><%= link_to 'Destroy', routine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+  <% @routines.each do |routine| %>
+    <tr>
+      <td><%= routine.name %> <br /> <%= routine.date %></td>
+      <td><%= link_to 'Show', routine, class: 'btn' %></td>
+      <td><%= link_to 'Edit', edit_routine_path(routine), class: 'btn-small' %></td>
+      <td><%= link_to 'Destroy', routine, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-small" %></td>
+    </tr>
+  <% end %>
+  </table>
 
-<br />
+  <br />
 
-<%= link_to 'New Routine', new_routine_path, class: 'btn' %>
-<%= link_to 'Stats', user_path(1), class: 'btn' %>
+  <%= link_to 'New Routine', new_routine_path, class: 'btn' %>
+  <%= link_to 'Stats', user_path(1), class: 'btn' %>

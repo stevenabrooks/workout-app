@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require jquery.ui.autocomplete
 //= require jquery.ui.datepicker
+//= require jquery.ui.accordion
+//= require jquery.ui.tabs
 //= require_tree .

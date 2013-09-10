@@ -7,27 +7,31 @@
   <%= @routine.name %><br />
   <%= @routine.date %>
 </p>
-<p>
-  <ul>
+
+<div id="chart_div"></div>
+<script>
+  $(function() {
+    $("#accordion").accordion();
+  });
+</script>
+
+
+<div id="accordion">
   <% @routine.lifts.each do |lift| %>
-  <%= lift.exercise.name %>
-    <ul>
+  <h3><%= lift.exercise.name %></h3>
+  <div>
+    <p>
       <% lift.infos.each do |set| %>
-        Set <ul>Weight: <%= set.weight %> Reps: <%= set.repetition %></ul><br />
+        Set <li> Weight: <%= set.weight %> Reps: <%= set.repetition %><br />
       <% end %>
-    </ul>
+    </p>
+  </div>
   <% end %>
-</ul>
-
-###################################
-
-  <div id="chart_div"></div>
+</div>
 
   <script>window.graph = <%= raw @graph %>
           window.args = <%= raw @routine.final_tooltip %>
   </script>
-
-###################################
 <br />
 
 <%= link_to 'See Stats', user_path(@routine.user.id) %> |
