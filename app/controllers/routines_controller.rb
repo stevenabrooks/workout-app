@@ -2,6 +2,7 @@ class RoutinesController < ApplicationController
   # GET /routines
   # GET /routines.json
   def index
+    @user = current_user
     @routines = Routine.all
 
     respond_to do |format|
@@ -44,7 +45,7 @@ class RoutinesController < ApplicationController
     # raise params.inspect
     @routine = Routine.new(:name => params[:routine][:name])
     @routine.date = params[:routine][:date]
-    @routine.user_id = 1 
+    @routine.user_id = current_user.id 
     if params[:routine][:bodyweight].size > 0
       @routine.bodyweight = params[:routine][:bodyweight].to_i
     else
@@ -120,6 +121,7 @@ class RoutinesController < ApplicationController
   # PUT /routines/1
   # PUT /routines/1.json
   def update
+    @user = current_user
     @routine = Routine.find(params[:id])
 
     respond_to do |format|
