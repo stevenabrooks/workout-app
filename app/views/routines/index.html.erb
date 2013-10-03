@@ -8,7 +8,7 @@
       <th></th>
     </tr>
 
-  <% Routine.rr.each do |routine| %>
+  <% Routine.rr(@user).each do |routine| %>
     <tr>
       <td><%= routine.name %> <br /> <%= routine.date %></td>
       <td><%= link_to 'Show', routine, class: 'btn' %></td>

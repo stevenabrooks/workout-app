@@ -118,7 +118,7 @@ class Routine < ActiveRecord::Base
   end
 
   def self.rr(user)
-    self.all.where(:user_id => user.id)
+    self.where(:user_id => user.id)
   end
 
 end
