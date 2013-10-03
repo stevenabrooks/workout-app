@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password
-  has_secure_password
+  attr_accessible :name
   has_many :routines
 
   def graph_for_total_weight_over_time(exercise_id)

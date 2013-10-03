@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-
-  include AuthEasy::RegistrationActions
   
   def show
     @user = User.find(params[:id])
