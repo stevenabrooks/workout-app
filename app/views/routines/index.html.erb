@@ -1,4 +1,10 @@
-  <h1>Routines</h1>
+  <h1>Your Routines</h1>
+
+<% if Routine.rr(@user).size == 0 %>
+  <div class="alert alert-info">
+    Create your first workout!
+  </div>
+<% else %>
 
   <table>
     <tr>
@@ -17,8 +23,11 @@
     </tr>
   <% end %>
   </table>
+<% end %>  
 
   <br />
 
   <%= link_to 'New Routine', new_routine_path, class: 'btn' %>
   <%= link_to 'Stats', user_path(1), class: 'btn' %>
+
+
