@@ -5,8 +5,8 @@ body {
 .container.meat {
   width: 50%;
   padding-top: 10px;
-  background-color: blue;
-  opacity: .5;
+  background-color: white;
+  /*opacity: .5;*/
 }
 
 .title {
