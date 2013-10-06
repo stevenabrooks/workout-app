@@ -5,6 +5,22 @@
   <%= @exercise.name %>
 </p>
 
+<p>
+  Difficulty: <%= rating_for @exercise, "difficulty" %>
+</p>
+
+<p>
+  Pump: <%= rating_for @exercise, "pump" %>
+</p>
+
+<p>
+  Rest: <%= rating_for @exercise, "rest" %>
+</p>
+
+<p>
+  Effectiveness: <%= rating_for @exercise, "effectiveness" %>
+</p>
+
 
 <%= link_to 'Edit', edit_exercise_path(@exercise) %> |
 <%= link_to 'Back', exercises_path %>

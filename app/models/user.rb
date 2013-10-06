@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   attr_accessible :name
   has_many :routines
 
+  letsrate_rater
+
   def graph_for_total_weight_over_time(exercise_id)
     array = [["Date", "Total Weight"]]
     b = Lift.where(:exercise_id => exercise_id)

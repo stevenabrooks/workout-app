@@ -1,4 +1,6 @@
 Workout::Application.routes.draw do
+  match '/rate' => 'rater#create', :as => 'rate'
+
   get "static/index"
 
   devise_for :users
