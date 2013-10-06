@@ -9,9 +9,10 @@ body {
   /*opacity: .5;*/
 }
 
-.title {
+h1.title {
   text-align: center;
   font-size: 2em;
+  font-weight: none;
 }
 
 .ny {
