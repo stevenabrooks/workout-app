@@ -11,6 +11,7 @@ body {
 
 .title {
   text-align: center;
+  font-size: 2em;
 }
 
 .ny {
@@ -35,4 +36,12 @@ body {
 
 .first_page {
   color: red;
+}
+
+a.span7.sign_up.btn.btn-danger {
+  color: white;
+}
+
+a.span7.login.btn.btn-info {
+  color: white;
 }
