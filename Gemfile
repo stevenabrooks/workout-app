@@ -46,3 +46,4 @@ end
 
 gem 'devise'
 gem 'letsrate'
+gem 'omniauth-twitter'
