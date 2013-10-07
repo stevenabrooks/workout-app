@@ -28,6 +28,7 @@
   <br />
 
   <%= link_to 'New Routine', new_routine_path, class: 'btn' %>
-  <%= link_to 'Stats', user_path(1), class: 'btn' %>
+  <%= link_to 'Stats', user_path(@user.id), class: 'btn' %>
+  <%= link_to 'Exercises', exercises_path, class: 'btn' %>
 
 
