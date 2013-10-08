@@ -5,16 +5,16 @@
     <% if activity.trackable_type == "Exercise" %>
       <% if activity.owner %>
         <%= activity.owner.email %>
-        added <%= link_to activity.trackable.name, exercise_path(activity.trackable.id) %> as an <%= link_to activity.trackable_type, exercises_path %>
+        added <%= link_to activity.trackable.name, exercise_path(activity.trackable.id) %> as an <%= link_to activity.trackable_type, exercises_path %> - <%= time_ago_in_words(activity.created_at) %>
       <% else %>
-        <%= link_to activity.trackable.name, exercise_path(activity.trackable.id) %> was added as an <%= link_to activity.trackable_type, exercises_path %> 
+        <%= link_to activity.trackable.name, exercise_path(activity.trackable.id) %> was added as an <%= link_to activity.trackable_type, exercises_path %> - <%= time_ago_in_words(activity.created_at) %>
       <% end %> 
     <% else %>
       <% if activity.owner %>
         <%= activity.owner.email %>
-        added a new <%= activity.trackable_type %> called <%= link_to activity.trackable.name, routine_path(activity.trackable.id) %>
+        added a new <%= activity.trackable_type %> called <%= link_to activity.trackable.name, routine_path(activity.trackable.id) %> - <%= time_ago_in_words(activity.created_at) %>
       <% else %>
-        A new <%= activity.trackable_type %> called <%= link_to activity.trackable.name, routine_path(activity.trackable.id) %> was added
+        A new <%= activity.trackable_type %> called <%= link_to activity.trackable.name, routine_path(activity.trackable.id) %> was added - <%= time_ago_in_words(activity.created_at) %>
       <% end %>
     <% end %> 
   </div>
