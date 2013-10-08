@@ -1,4 +1,5 @@
 Workout::Application.routes.draw do
+
   match '/rate' => 'rater#create', :as => 'rate'
 
   get "static/index"
@@ -17,6 +18,8 @@ Workout::Application.routes.draw do
   resources :routines
 
   resources :users
+
+  resources :activities
 
 
   # The priority is based upon order of creation:

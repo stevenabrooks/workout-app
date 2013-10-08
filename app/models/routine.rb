@@ -1,4 +1,7 @@
 class Routine < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) {controller && controller.current_user }
+
   attr_accessible :name, :date, :user_id, :bodyweight
 
   belongs_to :user

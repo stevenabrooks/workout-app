@@ -46,3 +46,13 @@ a.span7.sign_up.btn.btn-danger {
 a.span7.login.btn.btn-info {
   color: white;
 }
+
+div.activity.yes {
+  border-bottom: solid 1px #CCC;
+  padding: 16px, 0;
+  em {
+    color: #777;
+    font-size: 12px;
+    padding-left: 5px;
+  }
+}
