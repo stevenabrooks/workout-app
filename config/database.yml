@@ -20,6 +20,6 @@ test:
 
 production:
   adapter: sqlite3
-  database: /home/stevenabrooks/Workout/shared/db/production.sqlite3
+  database: db/development.sqlite3
   pool: 5
   timeout: 5000
