@@ -155,6 +155,12 @@ class Lift < ActiveRecord::Base
     array << "[new Date(#{self.routine.date.gsub(/\-/, ", ")}), #{self.total_weight_per_lift}, '#{self.exercise.name}']"
   end
 
+  def ummm
+    d = Lift.includes(:infos, :exercise).find(self.id)
+    puts d.exercise.name
+    d.infos.each {|info| puts info.info_string}
+  end
+
 
 end
 

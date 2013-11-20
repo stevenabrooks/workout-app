@@ -28,6 +28,15 @@ class Routine < ActiveRecord::Base
     array
   end
 
+  # def lifts_array2
+  #   array2 = []
+  #   b = Routine.includes(:lifts, :exercises, :info).find(self.id)
+  #   b.lifts.each do |lift|
+  #     array2 << lift.chart_info_for_lift
+  #   end
+  #   array2
+  # end
+
   def lifts_array
     array2 = []
     self.lifts.each do |lift|
