@@ -2,6 +2,7 @@
 
 <% @activities.each do |activity| %>
   <div class='activity yes'>
+    <% if activity.trackable %>
     <% if activity.trackable_type == "Exercise" %>
       <% if activity.owner %>
         <%= activity.owner.email %>
@@ -17,6 +18,7 @@
         A new <%= activity.trackable_type %> called <%= link_to activity.trackable.name, routine_path(activity.trackable.id) %> was added - <%= time_ago_in_words(activity.created_at) %>
       <% end %>
     <% end %> 
+    <% end %>
   </div>
 <% end %>
 <br />
