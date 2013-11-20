@@ -59,3 +59,5 @@ gem 'devise'
 gem 'letsrate'
 gem 'omniauth-twitter'
 gem 'public_activity'
+
+gem 'bullet', group: :development
