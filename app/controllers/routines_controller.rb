@@ -51,6 +51,7 @@ class RoutinesController < ApplicationController
     else
       @routine.bodyweight = Routine.by_date.last.bodyweight
     end
+    @routine.tag_list = params[:routine][:tag_list]
     @routine.save
 
     params[:lifts].each do |lift|

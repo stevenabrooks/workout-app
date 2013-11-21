@@ -59,7 +59,7 @@ gem 'devise'
 gem 'letsrate'
 gem 'omniauth-twitter'
 gem 'public_activity'
-
+gem 'acts-as-taggable-on'
 gem 'bullet', group: :development
 gem 'better_errors', group: :development
 gem 'binding_of_caller', group: :development

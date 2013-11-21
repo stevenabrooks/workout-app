@@ -5,7 +5,10 @@
   <%= @routine.user.name %><br />
   <%= @routine.bodyweight %><br />
   <%= @routine.name %><br />
-  <%= @routine.date %>
+  <%= @routine.date %><br />
+  <% if @routine.tag_list.size > 0 %>
+    Tags: <%= @routine.tag_list %>
+  <% end %>
 </p>
 
 <div id="chart_div"></div>
@@ -13,6 +16,8 @@
   $(function() {
     $("#accordion").accordion({
       fluid: true,
+      active: false,
+      collapsible: true,
     });
   });
 </script>
