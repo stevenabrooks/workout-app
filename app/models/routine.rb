@@ -18,7 +18,17 @@ class Routine < ActiveRecord::Base
       array << 'string'
     end
     array
-  end    
+  end   
+
+  def g
+    a = Routine.includes(:lifts => :infos).find(self.id)
+    array = ["exercise"]
+    a.most_reps.times do |n|
+      array << "set #{n+1}" 
+      array << 'string'
+    end
+    array
+  end  
 
   def graph
     array = []
