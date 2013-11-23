@@ -7,3 +7,5 @@ class UsersController < ApplicationController
 end
 
 # c = User.includes(:routines => {:lifts => [:exercise, :infos]}).find(current_user.id)
+
+# t = User.includes(:routines => {:lifts => [:exercise, :infos]}).find(1)
