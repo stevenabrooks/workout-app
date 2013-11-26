@@ -3,6 +3,7 @@ Workout::Application.routes.draw do
   match '/rate' => 'rater#create', :as => 'rate'
 
   get "static/index"
+  resources :static
 
   devise_for :users, controllers: {omniauth_callbacks: 'omniauth_callbacks'}
 
