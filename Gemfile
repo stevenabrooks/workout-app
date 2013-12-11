@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
+ruby '2.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -55,6 +56,12 @@ group :test do
   gem 'launchy', "~> 2.1.0"
 end
 
+group :production do
+  gem 'pg'
+  gem "rails_12factor"
+end
+
+gem "seed_dump", "~> 0.5.3"
 gem 'devise'
 gem 'letsrate'
 gem 'omniauth-twitter'
