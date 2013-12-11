@@ -38,7 +38,7 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
- gem 'debugger', '~> 1.6.0'
+
 
 group :development, :test do
   # gem 'better_errors'
