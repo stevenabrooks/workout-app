@@ -61,6 +61,7 @@ group :production do
   gem "rails_12factor"
 end
 
+gem "pjax_rails"
 gem "seed_dump", "~> 0.5.3"
 gem 'devise'
 gem 'letsrate'
